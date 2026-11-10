@@ -1,0 +1,6 @@
+{
+  "name": "Rescate Tempestad",
+  "description": "Juego de rescate lateral en helicóptero con cuerda flexible, viento y tornado en español.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
