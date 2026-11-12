@@ -1,0 +1,40 @@
+name: Backup to Google Drive transfer
+on:
+  push:
+    branches:
+      - 'backup-drive-2026-11-12'
+permissions:
+  contents: read
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Create complete git bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*'
+          mkdir -p backup
+          git bundle create backup/RescateTempestad.bundle --all
+          git bundle verify backup/RescateTempestad.bundle > backup/bundle-verification.txt 2>&1
+          git for-each-ref --format='%(refname) %(objectname)' > backup/refs.txt
+          git rev-parse HEAD > backup/workflow-commit.txt
+          if git lfs version >/dev/null 2>&1 && git lfs ls-files | grep -q .; then
+            git lfs fetch --all origin
+            tar -czf backup/lfs-objects.tar.gz -C .git lfs/objects
+          fi
+          sha256sum backup/RescateTempestad.bundle > backup/SHA256SUMS.txt
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backup-RescateTempestad
+          path: backup/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
