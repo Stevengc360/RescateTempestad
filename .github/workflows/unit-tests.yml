@@ -10,7 +10,7 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       issues: write
     steps:
       - uses: actions/checkout@v4
@@ -40,22 +40,21 @@ jobs:
           set -o pipefail
           ./gradlew :app:testDebugUnitTest --no-daemon 2>&1 | tee gradle-output.txt
 
-      - name: Publish failure diagnostic as issue
+      - name: Write diagnostic file to repo
         if: failure()
         run: |
           {
-            echo "### Diagnóstico de fallo CI (run ${{ github.run_id }})"
-            echo "Últimas 60 líneas de la salida de Gradle:"
-            echo '```'
+            echo "# Diagnóstico CI run ${{ github.run_id }}"
+            echo "`````"
             tail -n 60 gradle-output.txt || echo "(sin salida)"
-            echo '```'
-          } > body.md
-          curl -s -X POST \
+            echo "`````"
+          } > ci-diagnostic.md
+          B64=$(base64 -w0 ci-diagnostic.md)
+          curl -s -X PUT \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/issues \
-            -d "$(jq -Rs '{title:"[CI] Fallo de tests en el runner", body:.}' body.md)" > /dev/null
-          echo "issue de diagnóstico creado"
+            https://api.github.com/repos/${{ github.repository }}/contents/ci-diagnostic.md \
+            -d "{\"message\":\"ci: diagnostico del run ${{ github.run_id }}\",\"content\":\"$B64\"}" | head -c 200
 
       - name: Upload test report on failure
         if: failure()
