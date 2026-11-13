@@ -33,7 +33,26 @@ jobs:
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platforms;android-36.1" "build-tools;36.0.0" | tail -n 3
 
       - name: Run JVM unit tests
-        run: ./gradlew :app:testDebugUnitTest --no-daemon
+        run: |
+          set -o pipefail
+          ./gradlew :app:testDebugUnitTest --no-daemon 2>&1 | tee gradle-output.txt
+
+      - name: Publish failure diagnostic as issue
+        if: failure()
+        run: |
+          {
+            echo "### Diagnóstico de fallo CI (run ${{ github.run_id }})"
+            echo "Últimas 60 líneas de la salida de Gradle:"
+            echo '```'
+            tail -n 60 gradle-output.txt || echo "(sin salida)"
+            echo '```'
+          } > body.md
+          curl -s -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/issues \
+            -d "$(jq -Rs '{title:"[CI] Fallo de tests en el runner", body:.}' body.md)" > /dev/null
+          echo "issue de diagnóstico creado"
 
       - name: Upload test report on failure
         if: failure()
