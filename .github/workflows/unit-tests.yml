@@ -27,6 +27,11 @@ jobs:
           -storepass android -keypass android -keyalg RSA -keysize 2048
           -validity 10950 -dname "CN=Android Debug,O=Android,C=US"
 
+      - name: Install Android SDK components
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platforms;android-36.1" "build-tools;36.0.0" | tail -n 3
+
       - name: Run JVM unit tests
         run: ./gradlew :app:testDebugUnitTest --no-daemon
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+  body{margin:0;width:1024px;height:500px;overflow:hidden;background:linear-gradient(160deg,#060a14 0%,#0b1626 45%,#12283c 100%)}
+  .rain{position:absolute;inset:0;background:
+    repeating-linear-gradient(115deg,transparent 0 46px,rgba(180,193,202,.10) 46px 47px,transparent 47px 92px)}
+  .flash{position:absolute;inset:0;background:radial-gradient(ellipse 500px 160px at 78% 8%,rgba(160,190,255,.20),transparent 70%)}
+  .heli{position:absolute;left:70px;top:110px}
+  .title{position:absolute;right:56px;top:118px;text-align:right}
+  .title h1{margin:0;color:#e9c884;font:800 64px "Segoe UI",sans-serif;letter-spacing:2px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+  .title h1 span{color:#e7eae1;display:block;font-size:40px;font-weight:700;letter-spacing:8px}
+  .title p{color:#8c9da5;font:600 17px "Segoe UI",sans-serif;margin:14px 0 0;letter-spacing:1px}
+  .chips{position:absolute;right:56px;bottom:52px;display:flex;gap:10px}
+  .chip{color:#e9c884;border:1.5px solid rgba(233,200,132,.5);border-radius:18px;padding:7px 16px;font:700 14px "Segoe UI",sans-serif}
+  .ground{position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,#0d1219 60%)}
+  .tornado{position:absolute;left:590px;bottom:40px;opacity:.5}
+</style></head><body>
+<div class="rain"></div><div class="flash"></div>
+<svg class="heli" width="420" height="300" viewBox="0 0 420 300">
+  <g transform="rotate(-8 210 150)">
+    <rect x="120" y="110" width="200" height="110" rx="34" fill="#343d3f" stroke="#e7eae1" stroke-width="5"/>
+    <rect x="252" y="128" width="52" height="60" rx="10" fill="#e9c884"/>
+    <line x1="160" y1="118" x2="160" y2="218" stroke="#e7eae1" stroke-width="4"/>
+    <line x1="120" y1="166" x2="8" y2="118" stroke="#e7eae1" stroke-width="6"/>
+    <line x1="8" y1="118" x2="0" y2="60" stroke="#e7eae1" stroke-width="5"/>
+    <line x1="-16" y1="62" x2="16" y2="62" stroke="#e7eae1" stroke-width="6"/>
+    <line x1="188" y1="220" x2="180" y2="252" stroke="#e7eae1" stroke-width="5"/>
+    <line x1="252" y1="220" x2="260" y2="252" stroke="#e7eae1" stroke-width="5"/>
+    <line x1="150" y1="256" x2="292" y2="256" stroke="#e7eae1" stroke-width="5"/>
+    <line x1="210" y1="110" x2="210" y2="66" stroke="#e7eae1" stroke-width="6"/>
+    <line x1="70" y1="66" x2="350" y2="66" stroke="#e7eae1" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="150" cy="180" r="7" fill="#e9c884"/><circle cx="176" cy="180" r="7" fill="#e9c884"/>
+  </g>
+</svg>
+<svg class="tornado" width="150" height="330" viewBox="0 0 150 330">
+  <g stroke="#a2aeb4" fill="none" stroke-width="2.5">
+    <ellipse cx="75" cy="24" rx="70" ry="15" opacity=".5"/><ellipse cx="64" cy="62" rx="58" ry="13" opacity=".55"/>
+    <ellipse cx="78" cy="102" rx="48" ry="11" opacity=".6"/><ellipse cx="68" cy="142" rx="38" ry="10" opacity=".65"/>
+    <ellipse cx="75" cy="180" rx="29" ry="9" opacity=".7"/><ellipse cx="70" cy="216" rx="21" ry="8" opacity=".75"/>
+    <ellipse cx="72" cy="248" rx="15" ry="7" opacity=".8"/><ellipse cx="71" cy="276" rx="10" ry="6" opacity=".85"/>
+    <ellipse cx="71" cy="300" rx="6" ry="5" opacity=".9"/>
+  </g>
+</svg>
+<div class="ground"></div>
+<div class="title"><h1>RESCATE<span>TEMPESTAD</span></h1><p>6 misiones · viento, lluvia y tornado</p></div>
+<div class="chips"><div class="chip">🚁 Pilota el helicóptero</div><div class="chip">🪢 Cuerda de 14 eslabones</div><div class="chip">⛈️ Evacúa bajo tormenta</div></div>
+</body></html>
