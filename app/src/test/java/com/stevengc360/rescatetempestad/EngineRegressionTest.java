@@ -22,6 +22,16 @@ public class EngineRegressionTest {
         Field fx=GameEngine.class.getDeclaredField("ox"),fy=GameEngine.class.getDeclaredField("oy");fx.setAccessible(true);fy.setAccessible(true);System.arraycopy(e.rx,0,(double[])fx.get(e),0,GameEngine.N);System.arraycopy(e.ry,0,(double[])fy.get(e),0,GameEngine.N);
         GameEngine.Person p=e.people.get(0);p.x=e.rx[13];p.y=e.ry[13];e.tension=1.5;set(e,"overload",.61);e.tick(GameEngine.STEP,0,0,0);assertTrue(e.broken);assertEquals(GameEngine.Status.WAITING,p.status);assertEquals(0,e.cabin);
     }
+    @Test public void ropeBreakDropsHangingSurvivorAndSpareRopeRecovers()throws Exception{
+        GameEngine e=new GameEngine(2);e.rope=65;
+        for(int i=0;i<GameEngine.N;i++){e.rx[i]=e.x;e.ry[i]=e.y+20+65.0*i/(GameEngine.N-1);}
+        Field fx=GameEngine.class.getDeclaredField("ox"),fy=GameEngine.class.getDeclaredField("oy");fx.setAccessible(true);fy.setAccessible(true);System.arraycopy(e.rx,0,(double[])fx.get(e),0,GameEngine.N);System.arraycopy(e.ry,0,(double[])fy.get(e),0,GameEngine.N);
+        GameEngine.Person p=e.people.get(0);p.x=e.rx[13];p.y=e.ry[13];p.status=GameEngine.Status.HANGING;e.tension=1.5;set(e,"overload",.61);
+        e.tick(GameEngine.STEP,0,0,0);
+        assertTrue(e.broken);assertEquals(GameEngine.Status.WAITING,p.status);assertEquals(GameEngine.Phase.RUNNING,e.phase);assertEquals(e.ground(p.x)-18,p.y,0);
+        for(int i=0;i<200;i++)e.tick(GameEngine.STEP,0,0,1);
+        assertFalse(e.broken);assertTrue(e.rope>=90);assertEquals(GameEngine.Phase.RUNNING,e.phase);
+    }
     @Test public void allMissionsCompleteWithRepeatedRestores()throws Exception{
         for(int m=0;m<GameEngine.MISSIONS.length;m++){GameEngine e=new GameEngine(m);for(int i=0;i<30000&&e.phase==GameEngine.Phase.RUNNING;i++){GameEngineTest.flyMission(e,1);if(i%73==0&&e.phase==GameEngine.Phase.RUNNING){e.pause();e=GameEngine.restore(e.snapshot());e.resume();}}assertEquals("mission "+m+": "+e.failure,GameEngine.Phase.WON,e.phase);}
     }

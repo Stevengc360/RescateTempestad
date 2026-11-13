@@ -110,7 +110,7 @@ public final class GameEngine {
         double risk=storm(rx[N-1],ry[N-1])*rope/245;
         tension+=(clamp((worst-1)*1.7+risk*.95,0,1.5)-tension)*Math.min(1,dt*3);
         overload=tension>1.04?overload+dt:Math.max(0,overload-dt*2);
-        if(overload>.6&&index>=2){broken=true;spareCooldown=1.5;overload=tension=0;for(Person p:people)if(p.status==Status.HANGING)p.status=Status.LOST;say("¡Cuerda rota! Mantén BAJAR para reponer.",5);}
+        if(overload>.6&&index>=2){broken=true;spareCooldown=1.5;overload=tension=0;for(Person p:people)if(p.status==Status.HANGING){p.status=Status.WAITING;p.y=ground(p.x)-18;}say("¡Cuerda rota! Los colgados cayeron. Mantén BAJAR para reponer.",5);}
     }
     private void rescue(double dt){
         for(Person p:people){
