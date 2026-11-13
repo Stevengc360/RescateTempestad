@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+  body{margin:0;width:1280px;height:720px;overflow:hidden;background:linear-gradient(160deg,#060a14 0%,#0b1626 45%,#12283c 100%);font-family:'Segoe UI',sans-serif}
+  .rain{position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 52px,rgba(180,193,202,.10) 52px 53.5px,transparent 53.5px 104px)}
+  .flash{position:absolute;inset:0;background:radial-gradient(ellipse 600px 200px at 80% 8%,rgba(160,190,255,.20),transparent 70%)}
+  .heli{position:absolute;left:40px;top:80px}
+  .left{position:absolute;left:500px;top:130px;right:50px}
+  .left .kick{color:#f57370;font-weight:800;font-size:24px;letter-spacing:3px}
+  .left h1{color:#e9c884;font-size:74px;margin:8px 0 0;font-weight:800;line-height:1.02}
+  .left h1 span{color:#e7eae1;display:block;font-size:44px;letter-spacing:10px;font-weight:700}
+  .left p{color:#8c9da5;font-size:24px;margin:20px 0 0;font-weight:600}
+  .chips{position:absolute;left:500px;bottom:140px;display:flex;gap:12px;flex-wrap:wrap;max-width:700px}
+  .chip{color:#e9c884;border:1.5px solid rgba(233,200,132,.5);border-radius:20px;padding:9px 20px;font-weight:700;font-size:19px}
+  .pill{position:absolute;right:50px;bottom:60px;background:#e9c884;color:#08121a;font-weight:800;font-size:24px;border-radius:40px;padding:16px 40px}
+</style></head><body>
+<div class="rain"></div><div class="flash"></div>
+<svg class="heli" width="460" height="330" viewBox="0 0 420 300">
+  <g transform="rotate(-8 210 150)">
+    <rect x="120" y="110" width="200" height="110" rx="34" fill="#343d3f" stroke="#e7eae1" stroke-width="5"/>
+    <rect x="252" y="128" width="52" height="60" rx="10" fill="#e9c884"/>
+    <line x1="160" y1="118" x2="160" y2="218" stroke="#e7eae1" stroke-width="4"/>
+    <line x1="120" y1="166" x2="8" y2="118" stroke="#e7eae1" stroke-width="6"/>
+    <line x1="8" y1="118" x2="0" y2="60" stroke="#e7eae1" stroke-width="5"/>
+    <line x1="-16" y1="62" x2="16" y2="62" stroke="#e7eae1" stroke-width="6"/>
+    <line x1="188" y1="220" x2="180" y2="252" stroke="#e7eae1" stroke-width="5"/>
+    <line x1="252" y1="220" x2="260" y2="252" stroke="#e7eae1" stroke-width="5"/>
+    <line x1="150" y1="256" x2="292" y2="256" stroke="#e7eae1" stroke-width="5"/>
+    <line x1="210" y1="110" x2="210" y2="66" stroke="#e7eae1" stroke-width="6"/>
+    <line x1="70" y1="66" x2="350" y2="66" stroke="#e7eae1" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="150" cy="180" r="7" fill="#e9c884"/><circle cx="176" cy="180" r="7" fill="#e9c884"/>
+  </g>
+</svg>
+<div class="left">
+  <div class="kick">⚠️ NUEVO EN GOOGLE PLAY</div>
+  <h1>RESCATE<span>TEMPESTAD</span></h1>
+  <p>6 misiones · cuerda física de 14 eslabones · un tornado que lo intenta todo por quitarte los rescates</p>
+</div>
+<div class="chips">
+  <div class="chip">🚫 Sin anuncios</div><div class="chip">🚫 Sin compras</div>
+  <div class="chip">📴 Sin internet</div><div class="chip">🔒 Sin permisos</div>
+</div>
+<div class="pill">Descárgalo gratis</div>
+</body></html>
