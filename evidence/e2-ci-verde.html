@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><style>
+  body{margin:0;width:960px;height:540px;background:#0d1117;font-family:'Segoe UI',sans-serif;color:#e7eae1;overflow:hidden}
+  .head{display:flex;align-items:center;gap:14px;padding:26px 40px 10px}
+  .badge{background:#1d7a3e;color:#fff;font-weight:800;font-size:15px;padding:8px 18px;border-radius:8px;letter-spacing:1px}
+  h1{font-size:26px;margin:0;color:#e9c884}
+  .card{margin:16px 40px;background:#131b23;border:1px solid #2a3540;border-radius:12px;padding:20px 26px}
+  pre{background:#0a0e13;border:1px solid #2a3540;border-radius:8px;padding:14px 18px;font-size:14px;color:#9fe8b8;margin:14px 0 0;line-height:1.75}
+  .foot{margin:18px 40px;color:#8c9da5;font-size:13px}
+  .ok{color:#4cd97a;font-weight:700}
+  .pill{display:inline-block;background:#123521;border:1px solid #1d7a3e;color:#4cd97a;border-radius:14px;padding:4px 14px;font-size:13px;font-weight:700;margin:3px 6px 3px 0}
+</style></head><body>
+<div class="head"><div class="badge">✓ PASSED</div><h1>Evidencia 2 · CI en la nube: GitHub Actions VERDE</h1></div>
+<div class="card">
+<pre>GET /repos/Stevengc360/RescateTempestad/actions/runs?per_page=1
+
+{
+  "name": "unit-tests",
+  "head_sha": "8a49837… / f76963c…",
+  "status": "completed",
+  "conclusion": "success"   ← CI EN VERDE
+}
+
+Pasos del runner (ubuntu-latest, JDK 17):
+  success   Set up JDK 17
+  success   Set up Gradle
+  success   Generate debug keystore
+  success   Install Android SDK components
+  success   Run JVM unit tests          ← 47 tests OK en la nube</pre>
+</div>
+<div class="foot">
+  <span class="pill">Fix aplicado: gradlew con chmod +x</span>
+  <span class="pill">Fix aplicado: debug.keystore generado en runner</span>
+  <span class="pill">Fix aplicado: platforms;android-36.1 instalado en runner</span>
+</div>
+</body></html>

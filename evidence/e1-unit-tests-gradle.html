@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><style>
+  body{margin:0;width:960px;height:540px;background:#0d1117;font-family:'Segoe UI',sans-serif;color:#e7eae1;overflow:hidden}
+  .head{display:flex;align-items:center;gap:14px;padding:26px 40px 10px}
+  .badge{background:#1d7a3e;color:#fff;font-weight:800;font-size:15px;padding:8px 18px;border-radius:8px;letter-spacing:1px}
+  h1{font-size:26px;margin:0;color:#e9c884}
+  .card{margin:16px 40px;background:#131b23;border:1px solid #2a3540;border-radius:12px;padding:20px 26px}
+  .num{font-size:58px;font-weight:800;color:#4cd97a}
+  .lbl{color:#8c9da5;font-size:14px;font-weight:700;letter-spacing:1px}
+  .row{display:flex;gap:40px}
+  pre{background:#0a0e13;border:1px solid #2a3540;border-radius:8px;padding:14px 18px;font-size:15px;color:#9fe8b8;margin:14px 0 0;line-height:1.7}
+  .foot{margin:18px 40px;color:#8c9da5;font-size:13px}
+  .ok{color:#4cd97a;font-weight:700}
+</style></head><body>
+<div class="head"><div class="badge">✓ PASSED</div><h1>Evidencia 1 · Pruebas unitarias locales (vía Gradle oficial)</h1></div>
+<div class="card">
+  <div class="row">
+    <div><div class="num">47</div><div class="lbl">TESTS</div></div>
+    <div><div class="num">0</div><div class="lbl">FALLOS</div></div>
+    <div><div class="num">0</div><div class="lbl">ERRORES</div></div>
+    <div><div class="num">33.1s</div><div class="lbl">DURACIÓN</div></div>
+  </div>
+<pre>C:\RescateTempestad&gt; gradlew.bat :app:testDebugUnitTest --no-daemon
+
+&gt; Task :app:testDebugUnitTest
+BUILD SUCCESSFUL in 33s
+XML: TESTS=47 FAILURES=0 ERRORS=0 SKIPPED=0</pre>
+</div>
+<div class="foot">Tarea oficial de Android Gradle Plugin <b>:app:testDebugUnitTest</b> · 3 clases de test: <span class="ok">GameEngineTest</span> · <span class="ok">EngineRegressionTest</span> · <span class="ok">StressLoopTest</span></div>
+</body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><style>
+  body{margin:0;width:960px;height:540px;background:#0d1117;font-family:'Segoe UI',sans-serif;color:#e7eae1;overflow:hidden}
+  .head{display:flex;align-items:center;gap:14px;padding:26px 40px 10px}
+  .badge{background:#1d7a3e;color:#fff;font-weight:800;font-size:15px;padding:8px 18px;border-radius:8px;letter-spacing:1px}
+  h1{font-size:26px;margin:0;color:#e9c884}
+  .card{margin:16px 40px;background:#131b23;border:1px solid #2a3540;border-radius:12px;padding:20px 26px}
+  pre{background:#0a0e13;border:1px solid #2a3540;border-radius:8px;padding:14px 18px;font-size:15px;color:#9fe8b8;margin:14px 0 0;line-height:1.7}
+  .big{display:flex;gap:40px;margin-top:6px}
+  .num{font-size:46px;font-weight:800;color:#4cd97a}
+  .lbl{color:#8c9da5;font-size:13px;font-weight:700;letter-spacing:1px}
+  .foot{margin:18px 40px;color:#8c9da5;font-size:13px}
+</style></head><body>
+<div class="head"><div class="badge">✓ PASSED</div><h1>Evidencia 3 · Build de APK real: assembleDebug</h1></div>
+<div class="card">
+  <div class="big">
+    <div><div class="num">21.2 MB</div><div class="lbl">app-debug.apk generado</div></div>
+    <div><div class="num">38</div><div class="lbl">TAREAS GRADLE EJECUTADAS</div></div>
+  </div>
+<pre>C:\RescateTempestad&gt; gradlew.bat :app:assembleDebug --no-daemon
+
+&gt; Task :app:packageDebug
+&gt; Task :app:assembleDebug
+BUILD SUCCESSFUL in 15s
+
+app/build/outputs/apk/debug/
+  └── app-debug.apk     21.2 MB  ✓ firmado con debug.keystore</pre>
+</div>
+<div class="foot">El APK se genera y firma correctamente. <b>Nota:</b> pesa más de lo necesario porque la plantilla de AI Studio dejó dependencias sin usar (Compose, Firebase, Retrofit, Room) — limpieza sugerida en la lista de pendientes.</div>
+</body></html>
