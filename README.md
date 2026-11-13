@@ -33,11 +33,23 @@ La versión indicada en `app/build.gradle.kts` es **0.2.1**.
 3. Selecciona un emulador o dispositivo compatible y ejecuta el módulo `app`.
 4. Para ejecutar las pruebas JVM, utiliza la tarea Gradle `:app:testDebugUnitTest`. Para generar un APK de depuración, utiliza `:app:assembleDebug`.
 
+En cada `push` a `main`, GitHub Actions ejecuta la suite completa (`.github/workflows/unit-tests.yml`). Estado actual: **47 pruebas, 0 fallos** — incluyen bucles de estrés aleatorizados (`StressLoopTest`: 5 semillas × 6 misiones con checkpoint/restore cada 977 ticks).
+
 La configuración de firma de publicación necesita un almacén de claves propio y variables de entorno. **No subas contraseñas, claves de firma ni archivos privados al repositorio.**
+
+## Ficha de Google Play
+
+| Elemento | Detalle |
+| --- | --- |
+| Política de privacidad | https://stevengc360.github.io/privacy-policy.html (sin recogida de datos, sin anuncios, sin permisos) |
+| Público objetivo | 13+ (no dirigido a niños) |
+| Gráfico destacado (1024×500) | `store-assets/feature-graphic-1024x500.png` |
+| Icono (512×512) | `store-assets/icon-512.png` |
+| Sugerencias visuales de mejora | `store-assets/visual-suggestions.png` |
 
 ## Comprobaciones pendientes
 
-Validar compilación y pruebas en CI, comprobar controles táctiles y rendimiento en dispositivos reales, revisar el ciclo de guardado/carga y completar los requisitos de Google Play antes de distribuir. La documentación describe lo observado en el código; no certifica esas comprobaciones.
+Comprobar controles táctiles y rendimiento en dispositivos físicos reales, y crear el AAB firmado de release (`:app:bundleRelease` con keystore propio) antes de subirlo a Google Play. La documentación describe lo observado en el código; no certifica esas comprobaciones.
 
 ## Repositorio relacionado
 
