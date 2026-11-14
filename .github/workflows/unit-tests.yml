@@ -35,10 +35,17 @@ jobs:
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platforms;android-36.1" "build-tools;36.0.0" | tail -n 3
 
-      - name: Run JVM unit tests
+      - name: Run JVM unit tests and build APK
         run: |
           set -o pipefail
-          ./gradlew :app:testDebugUnitTest --no-daemon 2>&1 | tee gradle-output.txt
+          ./gradlew :app:testDebugUnitTest :app:assembleDebug --no-daemon 2>&1 | tee gradle-output.txt
+
+      - name: Upload debug APK as artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
 
       - name: Write diagnostic file to repo
         if: failure()
